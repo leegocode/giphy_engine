@@ -7,21 +7,26 @@
       <input type="text"  v-model="searchtTerm">
     </div>
     <button class="button" @click="getGif()"> search </button>
-    <div class="flex justify-center items-center " id="result">
-        <div class="w-full flex justify-center  flex-wrap" >
-          <div class="flex items-center w-48 px-2 py-2 mx-2 my-2 bg-black relative " v-for="gif in gifs" :key="gif.images.original.url">
+    <div class="flex justify-center items-center" id="result">
+        <div class="w-full flex justify-center items-start flex-wrap" >
+          <giphyitems v-for="gif in gifs" :gif="gif" :key="gif.images.original.url"></giphyitems>
+          <!-- <div class="flex w-48 px-2 py-2 mx-2 my-2 bg-black relative " @mouseover="hover = true" @mouseleave="hover = false" v-for="gif in gifs" :key="gif.images.original.url">
             <transition-group name="fade">
-            <div class="w-full "  :key="gif.images.original.url">
-              <img :src="gif.images.original.url" class="h-auto w-full " >
-              <div v-if="gif.user" class="absolute bottom-0 left-0 flex items-center justify-around bg-gray-300 w-full gif">
-                <img :src="gif.user.avatar_url" class="w-10">
-                <div class="break-all flex-1 ml-2">
-                  {{ gif.user.display_name }}
+              <div class="w-full "  :key="gif.images.original.url" >
+                <img :src="gif.images.original.url" class="w-full" >
+                <div v-if="gif.user"  class="absolute bottom-0 left-0 flex  justify-between bg-gray-300 w-full ">
+                  <div class="" >
+                    <a :href="gif.user.profile_url" class="flex" v-if="hover">
+                      <img :src="gif.user.avatar_url" class="w-10" >
+                      <div class="break-all flex-1 ml-2">
+                        {{ gif.user.display_name }}
+                      </div>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </div>
+             </div>
           </transition-group>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -31,6 +36,7 @@
 
 <script>
 import { API } from '../src/api/api.js';
+import giphyitems from './components/GiphyItems.vue';
 export default {
   data(){
     return{
@@ -39,6 +45,9 @@ export default {
       limit: 40,
       gifs: []
     }
+  },
+  components:{
+    giphyitems
   },
   methods:{
     getGif(){
