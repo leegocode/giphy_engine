@@ -10,7 +10,9 @@
   "dependencies": {
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "node-sass": "^4.14.1",
     "postcss-cli": "^8.1.0",
+    "sass-loader": "^10.0.4",
     "tailwindcss": "^1.9.5",
     "vue": "^2.6.11",
     "vue-router": "^3.4.8"
@@ -37,7 +39,10 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-console": "off",
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": [
     "> 1%",
