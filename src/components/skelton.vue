@@ -1,6 +1,6 @@
 <template>
   <span
-    :style="{ height, width: computedWidth }"
+    :style="{ height: computedHeight, width: computedWidth }"
     class="SkeletonBox"
   />
 </template>
@@ -20,8 +20,7 @@ export default {
       type: Number,
     },
     height: {
-      // Make lines the same height as text.
-      default: '1em',
+      default: null,
       type: String,
     },
     width: {
@@ -32,6 +31,9 @@ export default {
     },
   },
   computed: {
+    computedHeight(){
+      return this.height
+    },
     computedWidth() {
       // Either use the given fixed width or
       // a random width between the given min
@@ -61,7 +63,7 @@ export default {
       90deg,
       rgba(#fff, 0) 0,
       rgba(#fff, 0.2) 20%,
-      rgba(#fff, 0.5) 60%,
+      rgba(#fff, 0.7) 60%,
       rgba(#fff, 0)
     );
     animation: shimmer 5s infinite;
