@@ -7,7 +7,7 @@
       width="w-full"
       height="h-56"
       />
-  <div v-else class="flex w-48 px-2 py-2 mx-2 my-2 bg-black relative cursor-pointer giphy" @mouseover="hover = true" @mouseleave="hover = false" >
+  <div v-else class="flex w-48 px-2 py-2 mx-2 my-2 bg-black relative cursor-pointer giphy" @click="geturl" @mouseover="hover = true" @mouseleave="hover = false" >
 
 
       <div class="w-full " >
@@ -43,7 +43,11 @@ export default {
       type: Boolean,
     },
   },
-
+  methods:{
+    geturl(){
+       window.open(this.gif.bitly_url, '_blank')
+    }
+  },
   data(){
     return{
       hover: false,
